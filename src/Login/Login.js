@@ -1,6 +1,6 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-import authHelper from '../Helpres/AuthHelper'
+import authHelper from '../helpres/authHelper'
 
 export class Login extends React.Component {
 
@@ -23,7 +23,7 @@ export class Login extends React.Component {
         if (this.state.redirect) {
             return <Redirect to="/settings" />
         }
-        return <button onClick={this.onLogin}>Login</button>
+        return <button className="underline text-blue-400 hover:no-underline" onClick={this.onLogin}>Login</button>
     }
 }
 

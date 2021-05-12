@@ -1,29 +1,20 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
-import * as detailsActions from '../Actions/Details';
 
 class Details extends React.Component {
 
-  componentDidMount() {
-    this.props.getEvents();
-  }
-
-  componentDidUpdate() {
-    if (this.props.detailsStore.shouldUpdate) {
-      const id = this.props.match.params.eventId;
-      this.props.findEvent(id);
-    }
-  }
-
   render() {
-    const { name, place, date, time } = this.props.detailsStore.event;
+    const eventId = this.props.match.params.eventId;
+    const event = this.props.eventsStore.events.find(item => item.id === Number(eventId));
 
     return (
       <div>
-        <strong>Nazwa:</strong> {name}<br />
-        <strong>Miejsce:</strong> {place}<br />
-        <strong>Data:</strong> {date}<br />
-        <strong>Godzina:</strong> {time}
+        <strong>Nazwa:</strong>{event.name}<br />
+        <strong>Miejsce:</strong>{event.place}<br />
+        <strong>Data:</strong>{event.date}<br />
+        <strong>Godzina:</strong>{event.time}
+        <Link className="my-3 block underline text-blue-400 hover:no-underline" to="/">Cofnij</Link>
       </div>
     );
   }
@@ -32,11 +23,5 @@ class Details extends React.Component {
 const mapStateToProps = (state) => {
   return { ...state };
 };
-const mapDispatchToProps = (dispatch) => {
-  return {
-    findEvent: (eventId) => dispatch(detailsActions.findEvent(eventId)),
-    getEvents: () => dispatch(detailsActions.getEvents())
-  };
-};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Details);
+export default connect(mapStateToProps)(Details);

@@ -1,99 +1,33 @@
 import React from 'react';
-import EventsItem from './EventsItem';
-import Filter from './Filter';
-import EventAdd from './EventAdd';
-import Loader from './Loader';
+import EventsItem from './eventsItem';
+import Filter from './filter';
+import EventAdd from './eventAdd';
+import Loader from './loader';
 import { connect } from 'react-redux';
-import * as eventsActions from '../Actions/Events'
+import * as eventsActions from '../actions/events'
 
 class Events extends React.Component {
 
-    constructor(props) {
-        super(props)
-        this.state = {
-            // events: [],
-            // filter: '',
-            // newName: '',
-            // newNameValid: false,
-            // newPlace: '',
-            // newPlaceValid: false,
-            // newDate: '',
-            // newDateValid: false,
-            // newTime: '',
-            // newTimeValid: false,
-            // isLoading: true
-        }
-    }
-
     componentDidMount() {
         this.props.getEvents()
-        // axios.get(`http://frontendinsights.com/events.json`)
-        //     .then(res => {
-        //         const events = res.data;
-
-        //         this.setState({
-        //             events,
-        //             isLoading: false
-        //         });
-        //     })
     };
 
 
     onClearEventsList = () => {
-        // this.setState({ events: [] });
         this.props.clearEvents()
     };
 
     onRemoveEvent = (id) => {
-        // const filteredArray = this.state.events.filter(item => item.id !== id);
-        // this.setState({
-        //     events: filteredArray
-        // });
         this.props.deleteEvent(id)
     }
 
     onFilterChange = (event) => {
         const eventName = event.currentTarget.value;
-        // this.setState({
-        //     filter: newValue
-        // })
         this.props.filterEvents(eventName)
     }
 
-    // onChangeName = (event) => {
-    //     const newValue = event.currentTarget.value;
-    //     this.setState({
-    //         newName: newValue
-    //     })
-    // }
-
-    // onChangePlace = (event) => {
-    //     const newValue = event.currentTarget.value;
-    //     this.setState({
-    //         newPlace: newValue
-    //     })
-    // }
-
-    // onChangeDate = (event) => {
-    //     const newValue = event.currentTarget.value;
-    //     this.setState({
-    //         newDate: newValue
-    //     })
-    // }
-
-    // onChangeTime = (event) => {
-    //     const newValue = event.currentTarget.value;
-    //     this.setState({
-    //         newTime: newValue
-    //     })
-    // }
-
     onInputChange = (event, field) => {
         const newValue = event.currentTarget.value;
-        // this.setState({
-        //     [fields]: newValue,
-        //     [fields + 'Valid']: newValue.length > 0
-        // })
         this.props.formDataEvent(newValue, field)
     }
 
@@ -115,7 +49,6 @@ class Events extends React.Component {
         if (newNameValid && newPlaceValid && newDateValid && newTimeValid) {
             this.props.addEvent(newName, newPlace, newDate, newTime)
         }
-
     }
 
     render() {

@@ -13,5 +13,4 @@ Loader.propTypes = {
     isLoading: PropTypes.bool.isRequired,
 };
 
-
 export default Loader

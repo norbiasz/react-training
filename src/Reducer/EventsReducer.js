@@ -1,4 +1,4 @@
-import * as constants from './../Actions/Constants'
+import * as constants from '../actions/constants'
 
 const initialState = {
     events: [],
