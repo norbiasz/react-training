@@ -3,13 +3,13 @@ import axios from 'axios';
 
 export function clearEvents() {
     return {
-        type: constants.CLEAR_EVENTS
+        type: constants.EVENTS_CLEAR
     }
 }
 
 export function deleteEvent(eventId) {
     return {
-        type: constants.DELETE_EVENT,
+        type: constants.EVENT_DELETE,
         payload: {
             eventId
         }
@@ -18,7 +18,7 @@ export function deleteEvent(eventId) {
 
 export function filterEvents(eventName) {
     return {
-        type: constants.FILTER_EVENTS,
+        type: constants.EVENTS_FILTER,
         payload: {
             eventName
         }
@@ -27,7 +27,7 @@ export function filterEvents(eventName) {
 
 export function formDataEvent(value, field) {
     return {
-        type: constants.FORM_DATA_EVENT,
+        type: constants.EVENT_FORM_DATA,
         payload: {
             value,
             field
@@ -37,7 +37,7 @@ export function formDataEvent(value, field) {
 
 export function addEvent(name, place, date, time) {
     return {
-        type: constants.ADD_EVENT,
+        type: constants.EVENT_ADD,
         payload: {
             name,
             place,
